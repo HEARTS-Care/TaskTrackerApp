@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:nasifay/screen/main/home_screen.dart';
+import 'package:nasifay/screen/main/landing_page.dart';
 
 class AuthController extends GetxController {
   final storage = GetStorage();
@@ -30,7 +31,7 @@ class AuthController extends GetxController {
       storage.write("user", userData);
       isLoggedIn.value = true;
 
-      Get.offAll(() => HomeScreen());
+      Get.offAll(() => LandingPage());
       Get.snackbar("Success", "Account created successfully!",
           colorText: Color(0xFFFFFFFF));
     } catch (e) {
@@ -51,7 +52,7 @@ class AuthController extends GetxController {
           storedUser["email"] == email &&
           storedUser["password"] == password) {
         isLoggedIn.value = true;
-        Get.offAll(() => HomeScreen());
+        Get.offAll(() => LandingPage());
         Get.snackbar("Success", "Login successful!");
       } else {
         Get.snackbar("Error", "Invalid email or password.",

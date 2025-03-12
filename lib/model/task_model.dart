@@ -1,16 +1,17 @@
 import 'package:equatable/equatable.dart';
 
+// ignore: must_be_immutable
 class TaskModel extends Equatable {
   final String? id;
   final String title;
   final String description;
-  final String status;
+  String status;
 
-  const TaskModel(
+  TaskModel(
       {this.id,
       required this.title,
       required this.description,
-      required this.status});
+      this.status = "Incomplete"});
 
   factory TaskModel.fromJson(Map<String, dynamic> json) {
     return TaskModel(
