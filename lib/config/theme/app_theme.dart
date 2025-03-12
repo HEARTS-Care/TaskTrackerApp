@@ -37,9 +37,9 @@ class LightModeTheme extends AppTheme {
   Color get secondary => const Color(0xFFFFFFFF);
 
   @override
-  Color get primaryText => const Color(0xFFFFFFFF);
+  Color get primaryText => const Color(0xFF000000);
   @override
-  Color get secondaryText => const Color(0xFF000000);
+  Color get secondaryText => const Color(0xFFFFFFFF);
 
   @override
   Color get primaryBackground => const Color(0xFFFFFFFF);
@@ -68,9 +68,9 @@ class DarkModeTheme extends AppTheme {
   Color get secondary => const Color(0xFF1C1C3B);
 
   @override
-  Color get primaryText => const Color(0xFF000000);
+  Color get primaryText => const Color(0xFFFFFFFF);
   @override
-  Color get secondaryText => const Color(0xFFFFFFFF);
+  Color get secondaryText => const Color(0xFF000000);
 
   @override
   Color get primaryBackground => const Color(0xFF000000);
