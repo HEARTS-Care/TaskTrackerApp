@@ -6,9 +6,11 @@ class ProfileProvider extends ChangeNotifier {
 
   String _username = '';
   String _email = '';
+  String _password = '';
 
   String get username => _username;
   String get email => _email;
+  String get password => _password;
 
   ProfileProvider() {
     _loadUserProfile();
@@ -19,6 +21,7 @@ class ProfileProvider extends ChangeNotifier {
     if (user != null) {
       _username = user["username"] ?? '';
       _email = user["email"] ?? '';
+      _password = user["password"] ?? '';
       notifyListeners();
     }
   }
@@ -30,6 +33,7 @@ class ProfileProvider extends ChangeNotifier {
     Map<String, dynamic> updatedUser = {
       "username": _username,
       "email": _email,
+      "password": _password
     };
 
     _storage.write("user", updatedUser);
