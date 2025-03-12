@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:nasifay/config/theme/app_theme.dart';
 
 class Onboarding extends StatefulWidget {
@@ -46,9 +47,8 @@ class _OnboardingState extends State<Onboarding> {
         curve: Curves.easeInOut,
       );
     } else {
-      Navigator.of(context).pushNamedAndRemoveUntil(
+      Get.toNamed(
         '/signup',
-        (Route<dynamic> route) => false,
       );
     }
   }

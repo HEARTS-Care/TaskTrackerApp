@@ -5,23 +5,22 @@ import 'package:nasifay/components/primary_button.dart';
 import 'package:nasifay/config/theme/app_theme.dart';
 import 'package:nasifay/controller/auth_controller.dart';
 
-class SignupFrom extends StatefulWidget {
-  const SignupFrom({super.key});
+class LoginForm extends StatefulWidget {
+  const LoginForm({super.key});
 
   @override
-  State<SignupFrom> createState() => _SignupFromState();
+  State<LoginForm> createState() => _LoginFormState();
 }
 
-class _SignupFromState extends State<SignupFrom> {
+class _LoginFormState extends State<LoginForm> {
   final AuthController authController = Get.put(AuthController());
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController _usernameController = TextEditingController();
+
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
   @override
   void dispose() {
-    _usernameController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
 
@@ -45,7 +44,7 @@ class _SignupFromState extends State<SignupFrom> {
             child: Column(
               children: [
                 Text(
-                  "Create account",
+                  "Welcome Back",
                   style: theme.typography.headlineMedium,
                 ),
                 const SizedBox(
@@ -61,27 +60,6 @@ class _SignupFromState extends State<SignupFrom> {
                 ),
                 Row(
                   children: [
-                    Expanded(
-                      child: formComponents.buildNormalTextField(
-                        _usernameController,
-                        Text(
-                          'Username',
-                          style: theme.typography.titleSmall
-                              .copyWith(fontWeight: FontWeight.normal),
-                        ),
-                        prefixIcon: const Icon(Icons.person),
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'username is required!';
-                          }
-
-                          return null;
-                        },
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
                     Expanded(
                       child: formComponents.buildNormalTextField(
                         _emailController,
@@ -139,9 +117,7 @@ class _SignupFromState extends State<SignupFrom> {
                 PrimaryButton(
                     onPressed: () {
                       if (_formKey.currentState?.validate() ?? false) {
-                        authController.signup(
-                            _usernameController.text.trim(),
-                            _emailController.text.trim(),
+                        authController.login(_emailController.text.trim(),
                             _passwordController.text.trim());
                       }
                     },
@@ -152,7 +128,7 @@ class _SignupFromState extends State<SignupFrom> {
                               color: theme.secondary,
                             )
                           : Text(
-                              'Sign Up',
+                              'Login',
                               style: theme.typography.labelMedium,
                             );
                     })),
@@ -163,16 +139,16 @@ class _SignupFromState extends State<SignupFrom> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Already have an account?',
+                      'Don\'t have an account?',
                       style: theme.typography.bodyMedium,
                     ),
                     const SizedBox(
                       width: 5,
                     ),
                     GestureDetector(
-                      onTap: () => Get.toNamed('/login'),
+                      onTap: () => Get.toNamed('/signup'),
                       child: Text(
-                        'Login',
+                        'Sign Up',
                         style: TextStyle(
                             color: theme.primary,
                             fontWeight: FontWeight.bold,

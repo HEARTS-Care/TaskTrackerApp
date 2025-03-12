@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:nasifay/components/welcome_card.dart';
 import 'package:nasifay/config/theme/app_theme.dart';
-import 'package:nasifay/screen/auth/widget/signup_form.dart';
+import 'package:nasifay/screen/auth/widget/login_form.dart';
 
-class SignUp extends StatelessWidget {
-  const SignUp({super.key});
+class Login extends StatelessWidget {
+  const Login({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class SignUp extends StatelessWidget {
             SizedBox(
               height: 10,
             ),
-            SignupFrom()
+            LoginForm()
           ],
         ),
       ),

@@ -1,41 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:nasifay/config/theme/app_theme.dart';
+import 'package:nasifay/controller/auth_controller.dart';
+import 'package:nasifay/screen/auth/login.dart';
+import 'package:nasifay/screen/auth/sign_up.dart';
 import 'package:nasifay/screen/onboarding/onboarding.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await GetStorage.init();
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
+
+  final AuthController authController = Get.put(AuthController());
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        title: 'Task Scheduler',
-        theme: LightModeTheme().themeData,
-        darkTheme: DarkModeTheme().themeData,
-        home: Onboarding());
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: Center(child: Text('Hello There!')),
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Task Scheduler',
+      initialRoute:
+          authController.storage.read("user") != null ? "/home" : "/onboarding",
+      theme: LightModeTheme().themeData,
+      darkTheme: DarkModeTheme().themeData,
+      getPages: [
+        GetPage(name: "/login", page: () => Login()),
+        GetPage(name: "/signup", page: () => SignUp()),
+        GetPage(name: "/onboarding", page: () => Onboarding()),
+      ],
     );
   }
 }
