@@ -4,6 +4,7 @@ import 'package:nasifay/components/form_component.dart';
 import 'package:nasifay/components/primary_button.dart';
 import 'package:nasifay/config/theme/app_theme.dart';
 import 'package:nasifay/controller/auth_controller.dart';
+import 'package:nasifay/screen/auth/sign_up.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
@@ -14,7 +15,7 @@ class LoginForm extends StatefulWidget {
 
 class _LoginFormState extends State<LoginForm> {
   final AuthController authController = Get.put(AuthController());
-  final _formKey = GlobalKey<FormState>();
+  final _formKey1 = GlobalKey<FormState>();
 
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -40,7 +41,7 @@ class _LoginFormState extends State<LoginForm> {
         padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
         child: SingleChildScrollView(
           child: Form(
-            key: _formKey,
+            key: _formKey1,
             child: Column(
               children: [
                 Text(
@@ -116,7 +117,7 @@ class _LoginFormState extends State<LoginForm> {
                 ),
                 PrimaryButton(
                     onPressed: () {
-                      if (_formKey.currentState?.validate() ?? false) {
+                      if (_formKey1.currentState?.validate() ?? false) {
                         authController.login(_emailController.text.trim(),
                             _passwordController.text.trim());
                       }
@@ -133,20 +134,20 @@ class _LoginFormState extends State<LoginForm> {
                             );
                     })),
                 const SizedBox(
-                  height: 5,
+                  height: 35,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
                       'Don\'t have an account?',
-                      style: theme.typography.bodyMedium,
+                      style: theme.typography.bodySmall,
                     ),
                     const SizedBox(
                       width: 5,
                     ),
                     GestureDetector(
-                      onTap: () => Get.toNamed('/signup'),
+                      onTap: () => Get.off(() => SignUp()),
                       child: Text(
                         'Sign Up',
                         style: TextStyle(

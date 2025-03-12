@@ -14,14 +14,14 @@ class WelcomeCard extends StatelessWidget {
         children: [
           Text(
             'Task Manager',
-            style: theme.typography.bodyMedium,
+            style: theme.typography.labelLarge,
           ),
           const SizedBox(
             height: 5,
           ),
           Image.asset(
             'assets/images/on1.png',
-            color: theme.primaryBackground,
+            // color: theme.secondaryBackground,
             height: 150,
             width: 150,
           ),

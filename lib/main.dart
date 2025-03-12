@@ -5,6 +5,7 @@ import 'package:nasifay/config/theme/app_theme.dart';
 import 'package:nasifay/controller/auth_controller.dart';
 import 'package:nasifay/screen/auth/login.dart';
 import 'package:nasifay/screen/auth/sign_up.dart';
+import 'package:nasifay/screen/main/home_screen.dart';
 import 'package:nasifay/screen/onboarding/onboarding.dart';
 
 void main() async {
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
       theme: LightModeTheme().themeData,
       darkTheme: DarkModeTheme().themeData,
       getPages: [
+        GetPage(name: "/home", page: () => HomeScreen()),
         GetPage(name: "/login", page: () => Login()),
         GetPage(name: "/signup", page: () => SignUp()),
         GetPage(name: "/onboarding", page: () => Onboarding()),

@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:nasifay/screen/main/home_screen.dart';
@@ -28,9 +31,11 @@ class AuthController extends GetxController {
       isLoggedIn.value = true;
 
       Get.offAll(() => HomeScreen());
-      Get.snackbar("Success", "Account created successfully!");
+      Get.snackbar("Success", "Account created successfully!",
+          colorText: Color(0xFFFFFFFF));
     } catch (e) {
-      Get.snackbar("Error", "Failed to create account. Please try again.");
+      Get.snackbar("Error", "Failed to create account. Please try again.",
+          colorText: Color(0xFFFFFFFF));
     } finally {
       isLoading.value = false;
     }
@@ -41,6 +46,7 @@ class AuthController extends GetxController {
 
     try {
       var storedUser = storage.read("user");
+      log(storedUser.toString());
       if (storedUser != null &&
           storedUser["email"] == email &&
           storedUser["password"] == password) {
@@ -48,7 +54,8 @@ class AuthController extends GetxController {
         Get.offAll(() => HomeScreen());
         Get.snackbar("Success", "Login successful!");
       } else {
-        Get.snackbar("Error", "Invalid email or password.");
+        Get.snackbar("Error", "Invalid email or password.",
+            colorText: Color(0xFFFFFFFF));
       }
     } catch (e) {
       Get.snackbar("Error", "Failed to login. Please try again.");
@@ -59,7 +66,7 @@ class AuthController extends GetxController {
 
   void logout() {
     isLoggedIn.value = false;
-    storage.remove("user");
+    // storage.remove("user");
     Get.offAllNamed("/login");
   }
 
