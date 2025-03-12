@@ -147,7 +147,7 @@ class FormComponents {
           minWidth: 40,
           minHeight: 40,
         ),
-        filled: true,
+        filled: false,
         fillColor: theme.secondary,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12.0),
@@ -165,7 +165,7 @@ class FormComponents {
       maxLines: maxLines,
       decoration: InputDecoration(
         label: labelText,
-        filled: true,
+        filled: false,
         fillColor: theme.secondary,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12.0),
