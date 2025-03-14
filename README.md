@@ -2,15 +2,25 @@
 
 A new Flutter project.
 
-## Getting Started
+## Task Manager
 
-This project is a starting point for a Flutter application.
+<p align="center">
+  <img src="assets/images/screenshots/img1.png" width="200">
+  <img src="assets/images/screenshots/img2.png" width="200">
+  <img src="assets/images/screenshots/img3.png" width="200">
+  <img src="assets/images/screenshots/img4.png" width="200">
+  <img src="assets/images/screenshots/img5.png" width="200">
+  <img src="assets/images/screenshots/img6.png" width="200">
+  <img src="assets/images/screenshots/img7.png" width="200">
+</p>
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<p align="center">
+  
+  <img src="assets/images/screenshots/img8.png" width="200">
+  <img src="assets/images/screenshots/img9.png" width="200">
+  <img src="assets/images/screenshots/img10.png" width="200">
+  <img src="assets/images/screenshots/img11.png" width="200">
+  <img src="assets/images/screenshots/img12.png" width="200">
+  <img src="assets/images/screenshots/img13.png" width="200">
+  
+</p>
