@@ -12,10 +12,13 @@ import 'package:nasifay/screen/auth/login.dart';
 import 'package:nasifay/screen/auth/sign_up.dart';
 import 'package:nasifay/screen/main/landing_page.dart';
 import 'package:nasifay/screen/onboarding/onboarding.dart';
+import 'package:nasifay/service/notice_service.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await NoticeService().initNotification();
+
   await GetStorage.init();
   final themeController = Get.put(ThemeController());
 

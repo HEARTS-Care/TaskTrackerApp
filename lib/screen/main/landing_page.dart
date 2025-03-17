@@ -8,6 +8,7 @@ import 'package:nasifay/controller/bottom_nav_controller.dart';
 import 'package:nasifay/screen/main/add_task_screen.dart';
 import 'package:nasifay/screen/main/home_screen.dart';
 import 'package:nasifay/screen/main/profile_screen.dart';
+import 'package:nasifay/service/notice_service.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key});
@@ -25,6 +26,13 @@ class _LandingPageState extends State<LandingPage> {
   //       alignment: OverlayAlignment.center,
   //       enableDrag: true,
   //       overlayContent: "Floating Widget");
+
+  @override
+  void initState() {
+    // TODO: implement initState
+
+    NoticeService.startPeriodicNotifications();
+  }
   // }
 
   @override
@@ -59,8 +67,13 @@ class _LandingPageState extends State<LandingPage> {
       appBar: AppBar(
         elevation: 1,
         // leading: GestureDetector(
-        //   onDoubleTap: showFloatingWidget,
-        //   child: Icon(Icons.widgets),
+        //   onTap: () {
+        //     NoticeService().showNotification(
+        //       title: 'Urgent Task',
+        //       body: "Please check your Task",
+        //     );
+        //   },
+        //   child: Icon(Icons.notification_add),
         // ),
         title: Obx(() => Text(
               getTitle(navController.selectedItem.value),
