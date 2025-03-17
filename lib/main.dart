@@ -1,4 +1,7 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_overlay_window/flutter_overlay_window.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:nasifay/config/theme/app_theme.dart';
@@ -15,10 +18,31 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await GetStorage.init();
   final themeController = Get.put(ThemeController());
+
+  if (!await FlutterOverlayWindow.isPermissionGranted()) {
+    log("Requesting Permissions");
+    await FlutterOverlayWindow.requestPermission();
+  }
   runApp(MultiProvider(
     providers: [ChangeNotifierProvider(create: (_) => ProfileProvider())],
     child: MyApp(themeController: themeController),
   ));
+}
+
+@pragma("vm:entry-point")
+void overlayMain() {
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(
+    MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Material(
+        child: Container(
+          color: Colors.red,
+          child: const Text("My Overlay"),
+        ),
+      ),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

@@ -1,4 +1,7 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_overlay_window/flutter_overlay_window.dart';
 import 'package:get/get.dart';
 import 'package:nasifay/config/theme/app_theme.dart';
 import 'package:nasifay/controller/bottom_nav_controller.dart';
@@ -14,6 +17,16 @@ class LandingPage extends StatefulWidget {
 }
 
 class _LandingPageState extends State<LandingPage> {
+  // Future<void> showFloatingWidget() async {
+  //   log('Floating widget');
+  //   await FlutterOverlayWindow.showOverlay(
+  //       height: 100,
+  //       width: 100,
+  //       alignment: OverlayAlignment.center,
+  //       enableDrag: true,
+  //       overlayContent: "Floating Widget");
+  // }
+
   @override
   Widget build(BuildContext context) {
     AppTheme theme = AppTheme.of(context);
@@ -45,6 +58,10 @@ class _LandingPageState extends State<LandingPage> {
       backgroundColor: theme.primaryBackground,
       appBar: AppBar(
         elevation: 1,
+        // leading: GestureDetector(
+        //   onDoubleTap: showFloatingWidget,
+        //   child: Icon(Icons.widgets),
+        // ),
         title: Obx(() => Text(
               getTitle(navController.selectedItem.value),
               style: theme.typography.headlineSmall,
@@ -52,6 +69,22 @@ class _LandingPageState extends State<LandingPage> {
         centerTitle: true,
       ),
       body: Obx(() => getCurrentScreen(navController.selectedItem.value)),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          if (await FlutterOverlayWindow.isActive()) {
+            FlutterOverlayWindow.closeOverlay();
+          } else {
+            await FlutterOverlayWindow.showOverlay(
+                height: 100,
+                width: 100,
+                alignment: OverlayAlignment.center,
+                enableDrag: true,
+                overlayContent: "Floating Widget");
+          }
+        },
+        backgroundColor: theme.primary,
+        child: Icon(Icons.widgets),
+      ),
       bottomNavigationBar: Obx(() => BottomNavigationBar(
             currentIndex:
                 BottomNavState.values.indexOf(navController.selectedItem.value),
